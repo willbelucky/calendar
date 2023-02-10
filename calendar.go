@@ -133,10 +133,6 @@ func (c *Calendar) modifiedPreceding(date Date) Date {
 
 func (c *Calendar) addHoliday(dateString string, name string) {
 	// If the date exists in the holidays map, append the name to the slice
-	if _, ok := c.holidays[dateString]; ok {
-		c.holidays[dateString] = append(c.holidays[dateString], name)
-	} else {
-		// Otherwise, create a new slice with the name
-		c.holidays[dateString] = []string{name}
-	}
+	// Else, create a new slice with the name
+	c.holidays[dateString] = append(c.holidays[dateString], name)
 }
