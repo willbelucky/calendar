@@ -1,2 +1,2 @@
-# calendar
-Calendar for traders
+# calendar: Go (golang) calendar library for traders
+
