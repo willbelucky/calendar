@@ -6,6 +6,22 @@ import (
 	"github.com/willbelucky/calendar/city"
 )
 
+type BusinessDayConvention string
+
+const (
+	UNADJUSTED         BusinessDayConvention = "UNADJUSTED"
+	FOLLOWING          BusinessDayConvention = "FOLLOWING"
+	MODIFIED_FOLLOWING BusinessDayConvention = "MODIFIED_FOLLOWING"
+	PRECEDING          BusinessDayConvention = "PRECEDING"
+	MODIFIED_PRECEDING BusinessDayConvention = "MODIFIED_PRECEDING"
+)
+
+type BusinessDay string
+
+const (
+	SOUTH_KOREA_SEOUL BusinessDay = "SOUTH_KOREA_SEOUL"
+)
+
 type Calendar struct {
 	holidays              map[string][]string
 	BusinessDays          []BusinessDay
@@ -30,23 +46,6 @@ func GetCalendar(businessDays []BusinessDay, businessDayConvention BusinessDayCo
 	}
 	return c
 }
-
-type BusinessDayConvention string
-
-const (
-	UNADJUSTED         BusinessDayConvention = "UNADJUSTED"
-	FOLLOWING          BusinessDayConvention = "FOLLOWING"
-	MODIFIED_FOLLOWING BusinessDayConvention = "MODIFIED_FOLLOWING"
-	PRECEDING          BusinessDayConvention = "PRECEDING"
-	MODIFIED_PRECEDING BusinessDayConvention = "MODIFIED_PRECEDING"
-)
-
-type BusinessDay string
-
-const (
-	SOUTH_KOREA_SEOUL BusinessDay = "SOUTH_KOREA_SEOUL"
-)
-
 func (c *Calendar) IsBusinessDay(date Date) bool {
 	// If the date is a Saturday or Sunday, return false
 	if isWeekend(date) {
