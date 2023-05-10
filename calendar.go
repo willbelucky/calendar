@@ -19,7 +19,8 @@ const (
 type BusinessDay string
 
 const (
-	SOUTH_KOREA_SEOUL BusinessDay = "SOUTH_KOREA_SEOUL"
+	SOUTH_KOREA_SEOUL     BusinessDay = "SOUTH_KOREA_SEOUL"
+	UNITED_STATE_NEW_YORK BusinessDay = "UNITED_STATE_NEW_YORK"
 )
 
 type Calendar struct {
@@ -38,6 +39,10 @@ func GetCalendar(businessDays []BusinessDay, businessDayConvention BusinessDayCo
 		switch businessDay {
 		case SOUTH_KOREA_SEOUL:
 			for dateString, name := range city.SouthKoreaSeoulHolidays {
+				c.addHoliday(dateString, name)
+			}
+		case UNITED_STATE_NEW_YORK:
+			for dateString, name := range city.UnitedStateNewYorkHolidays {
 				c.addHoliday(dateString, name)
 			}
 		default:
